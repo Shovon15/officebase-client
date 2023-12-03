@@ -32,7 +32,7 @@ const CompanySection = () => {
 			<div className="px-5 md:px-10 pb-10 cursor-pointer">
 				<div className="flex bg-green-500 transform transition duration-300 hover:scale-110  rounded-2xl justify-between items-center px-5 lg:px-10 p-3">
 					<div className="">
-						<p className="text-xl md:text-3xl">Anonymous career talk with real professionals</p>
+						<p className="text-xl md:text-3xl font-bold text-white">Anonymous career talk with real professionals</p>
 						<Button variant="outlined" color="white" className=" rounded-full text-white mt-5">
 							Conversation
 						</Button>
@@ -47,9 +47,9 @@ const CompanySection = () => {
 							<img src={icon} className="w-10 h-10" />
 						</div>
 						<div>
-							<Typography variant="h5" color="blue-gray" className="mb-1">
+							<p className="mb-1 font-bold text-primary">
 								{text}
-							</Typography>
+							</p>
 							<Typography variant="small" color="gray" className="font-normal">
 								{desc}
 							</Typography>

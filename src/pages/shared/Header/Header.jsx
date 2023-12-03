@@ -8,7 +8,6 @@ import {
 	MenuHandler,
 	MenuList,
 	MenuItem,
-	Collapse,
 	Drawer,
 	ListItem,
 	ListItemPrefix,
@@ -16,30 +15,33 @@ import {
 	AccordionBody,
 	AccordionHeader,
 	Accordion,
-	Chip,
-	ListItemSuffix,
 } from "@material-tailwind/react";
-import logo from "../../assets/logo/officebase-logo.png";
-import { MdAdd } from "react-icons/md";
-import { IoMdNotificationsOutline } from "react-icons/io";
-import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import companyIcon from "../../assets/icon/office-building.png";
-import companyIcon2 from "../../assets/icon/office-building 2.png";
-import addReviewIcon from "../../assets/icon/add-review.png";
-import interviewIcon from "../../assets/icon/question.png";
-import salaryIcon from "../../assets/icon/money.png";
-import calcualtorIcon from "../../assets/icon/calculator.png";
-import moneyBagIcon from "../../assets/icon/money-bag.png";
-import salaryShareIcon from "../../assets/icon/salaryShare.png";
-import compareIcon from "../../assets/icon/compare.png";
-import addPhotoIcon from "../../assets/icon/add-photo.png";
-import { IoHomeOutline } from "react-icons/io5";
 
 import { Link } from "react-router-dom";
+import { showSuccessToast } from "../../../helper/ToastMessage";
+
+import logo from "../../../assets/logo/officebase-logo.png";
+import companyIcon from "../../../assets/icon/office-building.png";
+import companyIcon2 from "../../../assets/icon/office-building 2.png";
+import addReviewIcon from "../../../assets/icon/add-review.png";
+import interviewIcon from "../../../assets/icon/question.png";
+import salaryIcon from "../../../assets/icon/money.png";
+import calcualtorIcon from "../../../assets/icon/calculator.png";
+import moneyBagIcon from "../../../assets/icon/money-bag.png";
+import salaryShareIcon from "../../../assets/icon/salaryShare.png";
+import compareIcon from "../../../assets/icon/compare.png";
+import addPhotoIcon from "../../../assets/icon/add-photo.png";
+
+import { IoMdNotificationsOutline } from "react-icons/io";
+import { MdOutlineKeyboardArrowDown } from "react-icons/md";
+import { IoHomeOutline } from "react-icons/io5";
+import { MdAdd } from "react-icons/md";
 import { MdOutlineKeyboardArrowUp } from "react-icons/md";
+import { BsBuildings } from "react-icons/bs";
+import { VscPreview } from "react-icons/vsc";
+import { GoDotFill } from "react-icons/go";
 
 import "./header.css";
-import { showSuccessToast } from "../../helper/ToastMessage";
 
 export function Header() {
 	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
@@ -177,7 +179,7 @@ export function Header() {
 				<Button
 					size="sm"
 					variant="text"
-					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none"
+					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none text-textPrimary hover:bg-primary hover:text-white"
 				>
 					Companies
 					<MdOutlineKeyboardArrowDown
@@ -190,7 +192,7 @@ export function Header() {
 				<ul className="col-span-1 flex w-full flex-col gap-1 z-10 outline-none">
 					{companyMenuItems.map(({ title, description, icon, link, id }) => (
 						<Link to={link} key={id}>
-							<MenuItem className="parent flex items-center gap-3">
+							<MenuItem className="parent flex items-center gap-3 bg-green-50 hover:bg-primary">
 								<div className="child bg-gray-200 hover:bg-white rounded-md p-3">
 									<img src={icon} className="w-5 h-5" />
 								</div>
@@ -224,7 +226,7 @@ export function Header() {
 				<Button
 					size="sm"
 					variant="text"
-					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none"
+					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none text-textPrimary hover:bg-primary hover:text-white"
 				>
 					review
 					<MdOutlineKeyboardArrowDown
@@ -238,7 +240,7 @@ export function Header() {
 				<ul className="col-span-1 flex w-full flex-col gap-1 z-10 outline-none">
 					{reviewMenuItems.map(({ title, description, icon, link, id }) => (
 						<Link to={link} key={id}>
-							<MenuItem className="parent flex items-center gap-3">
+							<MenuItem className="parent flex items-center gap-3 bg-green-50 hover:bg-primary">
 								<div className="child bg-gray-200 hover:bg-white rounded-md p-3">
 									<img src={icon} className="w-5 h-5" />
 								</div>
@@ -272,7 +274,7 @@ export function Header() {
 				<Button
 					size="sm"
 					variant="text"
-					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none"
+					className="flex items-center rounded-none text-base font-normal capitalize tracking-normal outline-none text-textPrimary hover:bg-primary hover:text-white"
 				>
 					salary
 					<MdOutlineKeyboardArrowDown
@@ -285,7 +287,7 @@ export function Header() {
 				<ul className="col-span-1 flex w-full flex-col gap-1 z-10 outline-none">
 					{salaryMenuItems.map(({ title, description, icon, link, id }) => (
 						<Link to={link} key={id}>
-							<MenuItem className="parent flex items-center gap-3">
+							<MenuItem className="parent flex items-center gap-3 bg-green-50 hover:bg-primary">
 								<div className="child bg-gray-200 hover:bg-white rounded-md p-3">
 									<img src={icon} className="w-5 h-5" />
 								</div>
@@ -318,7 +320,7 @@ export function Header() {
 			<MenuHandler>
 				<Button
 					size="sm"
-					className="rounded-full flex gap-1 items-center bg-green-500   text-base font-normal capitalize outline-none py-1.5"
+					className="rounded-full flex gap-1 items-center bg-green-500   text-base font-normal capitalize outline-none py-1.5 "
 				>
 					<MdAdd className="h-5 w-5" />
 					contribute
@@ -329,7 +331,7 @@ export function Header() {
 				<ul className="col-span-1 flex w-full flex-col gap-1 z-10 outline-none">
 					{contributeMenuItems.map(({ title, description, icon, link, id }) => (
 						<Link to={link} key={id}>
-							<MenuItem className="parent flex items-center gap-3">
+							<MenuItem className="parent flex items-center gap-3 bg-green-50 hover:bg-primary">
 								<div className="child bg-gray-200 hover:bg-white rounded-md p-3">
 									<img src={icon} className="w-5 h-5" />
 								</div>
@@ -400,7 +402,7 @@ export function Header() {
 							<Button
 								size="sm"
 								variant="text"
-								className="rounded-none text-base font-normal capitalize tracking-normal"
+								className="rounded-none text-base font-normal capitalize tracking-normal text-textPrimary hover:bg-primary hover:text-white"
 							>
 								Home
 							</Button>
@@ -411,7 +413,7 @@ export function Header() {
 						<Button
 							size="sm"
 							variant="text"
-							className="rounded-none text-base font-normal capitalize tracking-normal"
+							className="rounded-none text-base font-normal capitalize tracking-normal text-textPrimary hover:bg-primary hover:text-white"
 						>
 							Community
 						</Button>
@@ -453,18 +455,18 @@ export function Header() {
 						<Accordion
 							open={open === 1}
 							icon={
-								<MdOutlineKeyboardArrowUp
-									strokeWidth={2.5}
-									className={`mx-auto h-4 w-4 transition-transform  ${
-										open === 1 ? "rotate-180" : ""
-									}`}
+								<MdOutlineKeyboardArrowDown
+									className={`h-5 w-5 transition-transform ${open === 1 ? "rotate-180" : ""}`}
 								/>
 							}
 						>
 							<ListItem className="p-0 border-b border-gray-400 rounded-none" selected={open === 1}>
-								<AccordionHeader onClick={() => handleOpen(1)} className="border-b-0 p-3">
+								<AccordionHeader
+									onClick={() => handleOpen(1)}
+									className={`border-b-0 p-3 ${open === 1 ? "bg-green-200" : ""}`}
+								>
 									<ListItemPrefix>
-										{/* <PresentationChartBarIcon className="h-5 w-5" /> */}
+										<BsBuildings className="h-5 w-5" />
 									</ListItemPrefix>
 									<Typography color="blue-gray" className="mr-auto font-normal">
 										Company
@@ -473,25 +475,24 @@ export function Header() {
 							</ListItem>
 							<AccordionBody className="py-1">
 								<List className="p-0">
-									<Link to="/company-review" onClick={() => setIsOpenDrawer(false)}>
-										<ListItem>
-											<ListItemPrefix>
-												<MdOutlineKeyboardArrowUp strokeWidth={3} className="h-3 w-5" />
-											</ListItemPrefix>
-											Write review
-										</ListItem>
-									</Link>
 									<ListItem>
 										<ListItemPrefix>
-											<MdOutlineKeyboardArrowUp strokeWidth={3} className="h-3 w-5" />
+											<GoDotFill strokeWidth={3} className="h-3 w-5" />
 										</ListItemPrefix>
-										Reporting
+										coming soon
+									</ListItem>
+
+									<ListItem>
+										<ListItemPrefix>
+											<GoDotFill strokeWidth={3} className="h-3 w-5" />
+										</ListItemPrefix>
+										coming soon
 									</ListItem>
 									<ListItem>
 										<ListItemPrefix>
-											<MdOutlineKeyboardArrowUp strokeWidth={3} className="h-3 w-5" />
+											<GoDotFill strokeWidth={3} className="h-3 w-5" />
 										</ListItemPrefix>
-										Projects
+										coming soon
 									</ListItem>
 								</List>
 							</AccordionBody>
@@ -499,15 +500,19 @@ export function Header() {
 						<Accordion
 							open={open === 2}
 							icon={
-								<MdOutlineKeyboardArrowUp
-									strokeWidth={2.5}
-									className={`mx-auto h-4 w-4 transition-transform ${open === 2 ? "rotate-180" : ""}`}
+								<MdOutlineKeyboardArrowDown
+									className={`h-5 w-5 transition-transform ${open === 2 ? "rotate-180 " : ""}`}
 								/>
 							}
 						>
-							<ListItem className="p-0" selected={open === 2}>
-								<AccordionHeader onClick={() => handleOpen(2)} className="border-b-0 p-3">
-									<ListItemPrefix>{/* <ShoppingBagIcon className="h-5 w-5" /> */}</ListItemPrefix>
+							<ListItem className="p-0 border-b border-gray-400 rounded-none" selected={open === 2}>
+								<AccordionHeader
+									onClick={() => handleOpen(2)}
+									className={`border-b-0 p-3 ${open === 2 ? "bg-green-200" : ""}`}
+								>
+									<ListItemPrefix>
+										<VscPreview className="h-5 w-5" />
+									</ListItemPrefix>
 									<Typography color="blue-gray" className="mr-auto font-normal">
 										Review
 									</Typography>
@@ -515,17 +520,19 @@ export function Header() {
 							</ListItem>
 							<AccordionBody className="py-1">
 								<List className="p-0">
+									<Link to="/company-review" onClick={() => setIsOpenDrawer(false)}>
+										<ListItem>
+											<ListItemPrefix>
+												<img src={addReviewIcon} alt="..." className="w-5 h-5" />
+											</ListItemPrefix>
+											Write review
+										</ListItem>
+									</Link>
 									<ListItem>
 										<ListItemPrefix>
-											<MdOutlineKeyboardArrowUp strokeWidth={3} className="h-3 w-5" />
+											<GoDotFill strokeWidth={3} className="h-3 w-5" />
 										</ListItemPrefix>
-										Orders
-									</ListItem>
-									<ListItem>
-										<ListItemPrefix>
-											<MdOutlineKeyboardArrowUp strokeWidth={3} className="h-3 w-5" />
-										</ListItemPrefix>
-										Products
+										coming soon
 									</ListItem>
 								</List>
 							</AccordionBody>

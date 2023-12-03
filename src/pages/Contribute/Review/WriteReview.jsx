@@ -243,7 +243,7 @@ const WriteReview = () => {
 						<div>
 							<Input
 								size="lg"
-								color="blue"
+								color="green"
 								label="Company Name"
 								{...register("companyName", {
 									required: "company name is Required",
@@ -257,7 +257,7 @@ const WriteReview = () => {
 						<div>
 							<Input
 								size="lg"
-								color="blue"
+								color="green"
 								label="Designation/Job Title"
 								{...register("designation", {
 									required: "Designation/Job Title is Required",
@@ -277,11 +277,11 @@ const WriteReview = () => {
 							<img src={pointingUp} className="w-7 h-7 rotate-180" />
 						</div>
 						<div>
-							<div className="flex justify-start">
-								<div className="w-full md:w-3/5 flex justify-between">
-									<p>
-										Overall Rating <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start">
+								<p className="flex gap-1 pb-1 w-full md:w-72">
+									Overall Rating <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="overallRating"
 										control={control}
@@ -298,18 +298,18 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Overall Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(overallRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(overallRating)}</div>
 							</div>
 							{errors.overallRating && <p className="text-red-500">{errors.overallRating.message}</p>}
 						</div>
 						{/* ----------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Work-Life balance <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start">
+								<p className="flex gap-1 pb-1 w-full md:w-72">
+									Work-Life balance <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="workLifeRating"
 										control={control}
@@ -324,20 +324,21 @@ const WriteReview = () => {
 												ratedColor="amber"
 											/>
 										)}
-										rules={{ required: "Work-Life Rating is Required" }}
+										rules={{ required: "Overall Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(workLifeRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(workLifeRating)}</div>
 							</div>
 							{errors.workLifeRating && <p className="text-red-500">{errors.workLifeRating.message}</p>}
 						</div>
+
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Salary & Benefits <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start">
+								<p className="w-full md:w-72 pb-1">
+									Salary & Benefits <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="salaryRating"
 										control={control}
@@ -354,18 +355,18 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Salary & Benefits rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(salaryRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(salaryRating)}</div>
 							</div>
 							{errors.salaryRating && <p className="text-red-500">{errors.salaryRating.message}</p>}
 						</div>
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Promotions / Appraisal <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start ">
+								<p className="w-full md:w-72 pb-1">
+									Promotions / Appraisal <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="promotionsRating"
 										control={control}
@@ -382,8 +383,8 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Promotions / Appraisal Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(promotionsRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(promotionsRating)}</div>
 							</div>
 							{errors.promotionsRating && (
 								<p className="text-red-500">{errors.promotionsRating.message}</p>
@@ -391,11 +392,11 @@ const WriteReview = () => {
 						</div>
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Job security <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start ">
+								<p className="w-full md:w-72 pb-1">
+									Job security <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="jobRating"
 										control={control}
@@ -412,18 +413,18 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Job security Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(jobRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(jobRating)}</div>
 							</div>
 							{errors.jobRating && <p className="text-red-500">{errors.jobRating.message}</p>}
 						</div>
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Skill Development / Learning <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start ">
+								<p className="w-full md:w-72 pb-1">
+									Skill Development / Learning <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="learningRating"
 										control={control}
@@ -440,18 +441,18 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Skill Development / Learning Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(learningRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(learningRating)}</div>
 							</div>
 							{errors.learningRating && <p className="text-red-500">{errors.learningRating.message}</p>}
 						</div>
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Work Satisfaction <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start ">
+								<p className="w-full md:w-72 pb-1">
+									Work Satisfaction <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="satisfactionRating"
 										control={control}
@@ -468,8 +469,8 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Work Satisfaction Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(satisfactionRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(satisfactionRating)}</div>
 							</div>
 							{errors.satisfactionRating && (
 								<p className="text-red-500">{errors.satisfactionRating.message}</p>
@@ -477,11 +478,11 @@ const WriteReview = () => {
 						</div>
 						{/* ---------------------- */}
 						<div>
-							<div className="flex justify-start ">
-								<div className="w-3/5 flex justify-between">
-									<p>
-										Company Culture <span className="text-red-500">*</span>
-									</p>
+							<div className="md:flex justify-start ">
+								<p className="w-full md:w-72 pb-1">
+									Company Culture <span className="text-red-500">*</span>
+								</p>
+								<div className="w-full md:w-3/5 flex justify-between md:justify-evenly">
 									<Controller
 										name="cultureRating"
 										control={control}
@@ -498,21 +499,21 @@ const WriteReview = () => {
 										)}
 										rules={{ required: "Company Culture Rating is Required" }}
 									/>
+									<div className="w-32 flex justify-end">{getRatingText(cultureRating)}</div>
 								</div>
-								<div className="w-32 flex justify-end">{getRatingText(cultureRating)}</div>
 							</div>
 							{errors.cultureRating && <p className="text-red-500">{errors.cultureRating.message}</p>}
 						</div>
 					</div>
 					{/*--------------------------------------------------------- rating star end */}
-					{/*------------- text area */}
+					{/*------------- text area ------------------------*/}
 					<div>
 						<p className="font-semibold pt-5 pb-3">
 							What do you like about working at your company? <span className="text-red-500">*</span>
 						</p>
 						<Textarea
 							label="Like"
-							color="blue"
+							color="green"
 							{...register("likes", {
 								required: "This field is Required",
 							})}
@@ -528,7 +529,7 @@ const WriteReview = () => {
 						<Textarea
 							name="text"
 							label="Dislikes"
-							color="blue"
+							color="green"
 							{...register("dislikes", {
 								required: "This field is Required",
 							})}
@@ -537,7 +538,7 @@ const WriteReview = () => {
 						/>
 						{errors.dislikes && <p className="text-red-500">{errors.dislikes.message}</p>}
 					</div>
-					{/* ---------------------------gender */}
+					{/* ---------------------------gender----------- */}
 					<div>
 						<p className="font-semibold pt-5 pb-3">
 							What gender do you identify with? <span className="text-red-500">*</span>
@@ -555,7 +556,7 @@ const WriteReview = () => {
 												// name="gender"
 												id={htmlFor}
 												ripple={false}
-												color="indigo"
+												color="green"
 												className="hover:before:opacity-0"
 												containerProps={{
 													className: "p-0",
@@ -590,7 +591,7 @@ const WriteReview = () => {
 												value={htmlFor}
 												id={htmlFor}
 												ripple={false}
-												color="indigo"
+												color="green"
 												className="hover:before:opacity-0"
 												containerProps={{
 													className: "p-0",
@@ -625,7 +626,7 @@ const WriteReview = () => {
 												value={htmlFor}
 												id={htmlFor}
 												ripple={false}
-												color="indigo"
+												color="green"
 												className="hover:before:opacity-0"
 												containerProps={{
 													className: "p-0",
@@ -653,8 +654,8 @@ const WriteReview = () => {
 								<Button
 									ripple={false}
 									variant="text"
-									className={`text-md capitalize outline-none py-1 flex items-center gap-5 hover:bg-transparent active:bg-transparent w-full h-10 justify-between px-5 md:ml-3 border border-gray-500 ${
-										openSearchMenu ? "border-2 border-blue-500" : ""
+									className={`text-md capitalize outline-none py-1 flex items-center gap-5 hover:bg-transparent active:bg-transparent w-full h-10 justify-between px-5 md:ml-3 border border-gray-500 text-primary ${
+										openSearchMenu ? "border-2 border-green-500" : ""
 									}`}
 								>
 									{employmentType}
@@ -672,7 +673,7 @@ const WriteReview = () => {
 										className="flex items-center gap-1 py-1 "
 									>
 										{employmentType === type ? (
-											<Typography className="font-medium text-blue-500">{type}</Typography>
+											<Typography className="font-medium text-green-500">{type}</Typography>
 										) : (
 											<Typography className="font-medium text-black">{type}</Typography>
 										)}
@@ -683,13 +684,16 @@ const WriteReview = () => {
 						</Menu>
 						{errors.employmentType && <p className="text-red-500">{errors.employmentType.message}</p>}
 					</div>
-					<Button
-						type="submit"
-						className="px-12 capitalize text-lg font-medium rounded-full bg-primary text-white  focus:ring-0 flex gap-2 items-center"
-					>
-						<GoShieldCheck className="w-5 h-5" />
-						Submit Anonymously
-					</Button>
+					<div className="flex justify-center md:justify-start mt-5 mb-10">
+						<Button
+							type="submit"
+							className="px-12 capitalize text-lg font-medium rounded-full bg-primary text-white
+						  focus:ring-0 flex gap-2 items-center "
+						>
+							<GoShieldCheck className="w-5 h-5" />
+							Submit Anonymously
+						</Button>
+					</div>
 				</div>
 			</form>
 		</div>
