@@ -25,6 +25,12 @@ import { BsEmojiNeutralFill } from "react-icons/bs";
 import { BsEmojiSmileFill } from "react-icons/bs";
 import { BsEmojiSunglassesFill } from "react-icons/bs";
 
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+import "./writeReview.css";
+import { IoCalendarNumberOutline } from "react-icons/io5";
+
 const WriteReview = () => {
 	const {
 		register,
@@ -45,6 +51,12 @@ const WriteReview = () => {
 	const [learningRating, setLearningRating] = useState(0);
 	const [satisfactionRating, setSatisfactionRating] = useState(0);
 	const [cultureRating, setCultureRating] = useState(0);
+
+	const [workingStatus, setWorkingStatus] = useState("");
+	const [startDate, setStartDate] = useState("");
+	const [endDate, setEndDate] = useState("");
+
+	console.log(workingStatus, "workingStatus");
 	// -----------------------
 	const [isFormDirty, setIsFormDirty] = useState(false);
 	// console.log(isFormDirty, "isFormDirty");
@@ -92,6 +104,8 @@ const WriteReview = () => {
 			likes: data.likes,
 			dislike: data.dislikes,
 			gender: data.gender,
+			workPolicy: data.workPolicy,
+			workStatus: data.workStatus,
 			employmentType: employmentType,
 		};
 		console.log(items, "items");
@@ -634,7 +648,10 @@ const WriteReview = () => {
 												{...register("workStatus", {
 													required: "Work policy is Required",
 												})}
-												onChange={() => setIsFormDirty(true)}
+												onChange={(event) => {
+													setIsFormDirty(true);
+													setWorkingStatus(event.target.value);
+												}}
 											/>
 										</ListItemPrefix>
 										<Typography className="font-medium text-black">{text}</Typography>
@@ -643,6 +660,51 @@ const WriteReview = () => {
 							))}
 							{errors.workStatus && <p className="text-red-500">{errors.workStatus.message}</p>}
 						</List>
+						{workingStatus === "yes" && (
+							<div className="">
+								<p className="font-semibold pt-5 pb-3">
+									Started working on <span className="text-red-500">*</span>
+								</p>
+
+								<DatePicker
+									selected={startDate}
+									dateFormat="MMMM-dd-yyyy"
+									onChange={(date) => setStartDate(date)}
+									maxDate={new Date()}
+									className="ring-1 ring-gray-500 p-2 rounded-lg md:ml-3 focus:outline-none focus:ring-green-500 focus:ring-2 "
+								/>
+							</div>
+						)}
+
+						{workingStatus === "no" && (
+							<div className="flex flex-col md:flex-row gap-3 md:gap-5">
+								<div>
+									<p className="font-semibold pt-5 pb-3">
+										Started working on <span className="text-red-500">*</span>
+									</p>
+									<DatePicker
+										selected={startDate}
+										dateFormat="dd-MMMM-yyyy"
+										onChange={(date) => setStartDate(date)}
+										maxDate={new Date()}
+										className="ring-1 ring-gray-500 p-2 rounded-lg md:ml-3 focus:outline-none focus:ring-green-500 focus:ring-2 "
+									/>
+								</div>
+								<div>
+									<p className="font-semibold pt-5 pb-3">
+										Employment ended on <span className="text-red-500">*</span>
+									</p>
+									<DatePicker
+										selected={endDate}
+										dateFormat="dd-MMMM-yyyy"
+										onChange={(date) => setEndDate(date)}
+										minDate={startDate}
+										maxDate={new Date()}
+										className="ring-1 ring-gray-500 p-2 rounded-lg md:ml-3 focus:outline-none focus:ring-green-500 focus:ring-2 "
+									/>
+								</div>
+							</div>
+						)}
 					</div>
 					{/* ----------------------- wirking type */}
 					<div className="w-full md:w-1/3 pb-5 ">
@@ -665,7 +727,6 @@ const WriteReview = () => {
 								</Button>
 							</MenuHandler>
 							<MenuList className="w-72">
-								{/* <ul className="col-span-1 flex w-full flex-col gap-1 z-10 outline-none"> */}
 								{EmploymentTypeItems.map(({ type, id }) => (
 									<MenuItem
 										onClick={() => setEmploymentType(type)}
@@ -679,7 +740,6 @@ const WriteReview = () => {
 										)}
 									</MenuItem>
 								))}
-								{/* </ul> */}
 							</MenuList>
 						</Menu>
 						{errors.employmentType && <p className="text-red-500">{errors.employmentType.message}</p>}

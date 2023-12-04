@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
 	Navbar,
 	Typography,
@@ -45,6 +45,7 @@ import "./header.css";
 
 export function Header() {
 	const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+	const [scrollPosition, setScrollPosition] = useState(0);
 
 	const openDrawer = () => setIsOpenDrawer(true);
 	const closeDrawer = () => setIsOpenDrawer(false);
@@ -54,14 +55,23 @@ export function Header() {
 	const [openSalaryMenu, setOpenSalaryMenu] = useState(false);
 	const [openContributeMenu, setOpenContributeMenu] = useState(false);
 
-	const [open, setOpen] = React.useState(0);
+	const [open, setOpen] = useState(0);
 
 	const handleOpen = (value) => {
 		setOpen(open === value ? 0 : value);
 	};
 
-	React.useEffect(() => {
+	useEffect(() => {
 		window.addEventListener("resize", () => window.innerWidth >= 960 && setIsOpenDrawer(false));
+	}, []);
+
+	// ----------------scroll position
+
+	useEffect(() => {
+		window.addEventListener("scroll", () => setScrollPosition(Math.round(window.scrollY)));
+		return () => {
+			window.removeEventListener("scroll", () => setScrollPosition(Math.round(window.scrollY)));
+		};
 	}, []);
 
 	const companyMenuItems = [
@@ -353,7 +363,10 @@ export function Header() {
 
 	return (
 		<div className="">
-			<Navbar className=" fixed top-0 z-10 h-max max-w-full rounded-none px-0 py-0 border-none">
+			<Navbar
+				className={`fixed top-0 z-10 h-max max-w-full rounded-none px-0 py-0 border-none !bg-white 
+			 ${scrollPosition > 50 ? "shadow-lg" : "shadow-none"}`}
+			>
 				<div className="flex items-center justify-between text-blue-gray-900 px-5 md:px-10 py-0">
 					<div className="flex gap-4 items-center">
 						<IconButton
@@ -396,7 +409,10 @@ export function Header() {
 						</div>
 					</div>
 				</div>
-				<div className="bg-gray-200 px-10  hidden lg:flex justify-between items-center">
+				<div
+					className={` px-10  hidden lg:flex justify-between items-center
+					${scrollPosition > 50 ? "border-b border-green-400" : ""}`}
+				>
 					<div className="flex ">
 						<Link to="/">
 							<Button

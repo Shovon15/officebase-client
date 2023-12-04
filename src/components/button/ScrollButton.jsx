@@ -8,20 +8,17 @@ const ScrollButton = () => {
 	const [isVisible, setIsVisible] = useState(false);
 
 	const handleScroll = () => {
-		// Check the scroll position and update the visibility state
 		const scrollY = window.scrollY || window.scrollY;
 		setIsVisible(scrollY > 100);
 	};
 
 	useEffect(() => {
-		// Add a scroll event listener
 		window.addEventListener("scroll", handleScroll);
 
-		// Clean up the event listener on component unmount
 		return () => {
 			window.removeEventListener("scroll", handleScroll);
 		};
-	}, []); // Empty dependency array to run the effect only once on mount
+	}, []);
 
 	return (
 		isVisible && (
