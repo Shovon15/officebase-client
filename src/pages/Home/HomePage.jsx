@@ -12,6 +12,11 @@ const HomePage = () => {
 			<CompanyPage />
 			<ExploreSections />
 			<ExampleSvg />
+			{/* <div>
+				<object type="image/svg+xml" data={bannerSVG}>
+					svg-animation
+				</object>
+			</div> */}
 		</div>
 	);
 };

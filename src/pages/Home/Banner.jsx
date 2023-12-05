@@ -4,7 +4,7 @@ import TypingAnimation from "../../components/banner/TypingAnimation";
 import { IoSearchOutline } from "react-icons/io5";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { useState } from "react";
-
+import bannerSVG from "../../assets/image/animatedSvg.svg";
 const Banner = () => {
 	const [isInputFocused, setIsInputFocused] = useState(false);
 	const [openSearchMenu, setOpenSearchMenu] = useState(false);
@@ -92,7 +92,10 @@ const Banner = () => {
 				</div>
 			</div>
 			<div className="w-full md:w-1/2 hidden lg:flex justify-end">
-				<img className="" src={bannerImg} />
+				{/* <img className="" src={bannerImg} /> */}
+				<object type="image/svg+xml" data={bannerSVG} className=" rounded-lg">
+					svg-animation
+				</object>
 			</div>
 		</div>
 	);
